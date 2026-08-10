@@ -1,6 +1,6 @@
 import Bio
 from Bio import Align
-from Bio.Align import substitution_matrices
+from Bio import SeqIO
 from Bio.Align.substitution_matrices import Array
 
 import numpy as np
@@ -99,10 +99,11 @@ class ori_finder:
         print(sub_matrix)
 
 
-    def local_alignment(self, virus_genome_path):
+    def local_alignment(self, virus_genome_fasta):
 
+        virus_genome_record = SeqIO.read("equine.txt", "fasta")
         #genome str should be a SINGLE line with no "\n" (newline characters)
-        virus_genome_str = Path(virus_genome_path).read_text(encoding="utf-8").replace("\n", "") 
+        virus_genome_str = str(virus_genome_record.seq).replace("\n", "") 
 
         # perform local alignemnt
         score = self.aligner.score(virus_genome_str, self.ori_query)
@@ -112,17 +113,36 @@ class ori_finder:
 
         for alignment in alignments:
             print(alignment)
+            #print(alignment.aligned)
+            print(alignment.coordinates)
 
         print(score)
 
+virus_genome_record = SeqIO.read("equine.txt", "fasta")
+virus_genome_str = str(virus_genome_record.seq).replace("\n", "") 
+print(virus_genome_str)
 
 
 ori_finder1 = ori_finder()
-ori_finder2 = ori_finder()
+# ori_finder2 = ori_finder()
+
+
+from collections import Counter
+
+def count_characters_fast(text):
+    # Pass the string directly into Counter and convert to a standard dict
+    return dict(Counter(text))
+
+print(count_characters_fast(virus_genome_str))
+
+
+
 
 ori_finder1.local_alignment("equine.txt")
-ori_finder2.local_alignment("PCV2.txt")
-ori_finder2.local_alignment("WDV.txt")
+# ori_finder2.local_alignment("PCV2.txt")
+# ori_finder2.local_alignment("WDV.txt")
+
+
 
 #matrix = substitution_matrices.load("NUC.4.4")
 
@@ -198,12 +218,4 @@ ori_finder2.local_alignment("WDV.txt")
 
 
 
-# from collections import Counter
 
-# def count_characters_fast(text):
-#     # Pass the string directly into Counter and convert to a standard dict
-#     return dict(Counter(text))
-
-# # Example usage:
-# print(count_characters_fast(muscovy_genome.replace("\n", "")))  
-# # Output: {'a': 1, 'p': 2, 'l': 1, 'e': 1}
