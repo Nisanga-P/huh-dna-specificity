@@ -100,40 +100,63 @@ class ori_finder:
 
 
     def local_alignment(self, virus_genome_fasta):
+        # Returns result (from local alignment), original virus genome: str, optimal score
 
         virus_genome_record = SeqIO.read("equine.txt", "fasta")
         #genome str should be a SINGLE line with no "\n" (newline characters)
         virus_genome_str = str(virus_genome_record.seq).replace("\n", "") 
 
         # perform local alignemnt
-        score = self.aligner.score(virus_genome_str, self.ori_query)
-        alignments = self.aligner.align(virus_genome_str, self.ori_query)
+        optimal_score = self.aligner.score(virus_genome_str, self.ori_query)
+        alignments = self.aligner.align(virus_genome_str, self.ori_query) 
+        #only alignments with optimal score saved in 'alignments' -> adjust substitution matrix to give just one alignment match (i.e. most likely ori)
 
-        #Optimal alignment score -> confidence of suggested ori sequence (only alignments with optimal score saved in 'alignments')
+        #Optimal alignment score -> confidence of suggested ori sequence 
+        return alignments, virus_genome_str, optimal_score
+
+
+    def obtain_ori_candidates(self, alignments, virus_genome_str):
+        # Once local alignment has been performed, converts results into list of ori candidates.
+
+        # Args:
+        #   alignments: Pairwise alignment object
+        #       -> result of local alignment
+        #   virus_genome_str: str
+        #       -> virus genome as a string (not fasta!)
+
+        # Returns:
+        #   Ori candidates: [str]
+
+        ori_candidates = []
 
         for alignment in alignments:
-            print(alignment)
-            #print(alignment.aligned)
-            print(alignment.coordinates)
+            ori_start_index = alignment.coordinates[0][0]
+            ori_end_index = alignment.coordinates[0][1]
 
-        print(score)
+            ori_candidates.append(virus_genome_str[ori_start_index:ori_end_index])
 
-virus_genome_record = SeqIO.read("equine.txt", "fasta")
-virus_genome_str = str(virus_genome_record.seq).replace("\n", "") 
-print(virus_genome_str)
+        return ori_candidates
+
+
+
+
 
 
 ori_finder1 = ori_finder()
+alignments, virus_str, score = ori_finder1.local_alignment("virus_genomes/GCF_000862765.1_ViralProj15442_genomic.fna")
+ori_candidates = ori_finder1.obtain_ori_candidates(alignments, virus_str)
+print(ori_candidates)
+print(score)
 # ori_finder2 = ori_finder()
 
 
-from collections import Counter
+# from collections import Counter
 
-def count_characters_fast(text):
-    # Pass the string directly into Counter and convert to a standard dict
-    return dict(Counter(text))
+# def count_characters_fast(text):
+#     # Pass the string directly into Counter and convert to a standard dict
+#     return dict(Counter(text))
 
-print(count_characters_fast(virus_genome_str))
+# print(count_characters_fast(virus_genome_str))
 
 
 
