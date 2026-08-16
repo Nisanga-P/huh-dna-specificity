@@ -17,6 +17,8 @@ class ori_finder:
 
         # ---------- Configure settings for local alignment ----------
         self.aligner.mode = "local" # local alignment (Smith-Waterman)
+        # self.aligner.mode = "global"
+        # self.aligner.target_end_gap_score = 0.0
 
         # prevent aligner from adding gaps during the alignment -> the 9-mer ori query should be aligned exactly!
         self.aligner.open_gap_score = -math.inf 
@@ -50,8 +52,8 @@ class ori_finder:
             sub_matrix[residue, "A"] = -math.inf
             sub_matrix[residue, "C"] = -math.inf
 
-        sub_matrix["A", "A"] = 30.0 # must be a large value (avoid edge case where terminating sequence gives optimal alignment -> "AC" never matched so -inf penalty not applied)
-        sub_matrix["C", "C"] = 30.0
+        sub_matrix["A", "A"] = 50.0 # must be a large value (avoid edge case where terminating sequence gives optimal alignment -> "AC" never matched so -inf penalty not applied)
+        sub_matrix["C", "C"] = 50.0
 
         # T(-4), T(-1): Most likely definitely "T", but in a few gemini-viruses not specific (can be any base)
         sub_matrix[:, "T"] = -1.5
@@ -102,7 +104,7 @@ class ori_finder:
     def local_alignment(self, virus_genome_fasta):
         # Returns result (from local alignment), original virus genome: str, optimal score
 
-        virus_genome_record = SeqIO.read("equine.txt", "fasta")
+        virus_genome_record = SeqIO.read(virus_genome_fasta, "fasta")
         #genome str should be a SINGLE line with no "\n" (newline characters)
         virus_genome_str = str(virus_genome_record.seq).replace("\n", "") 
 
@@ -143,11 +145,23 @@ class ori_finder:
 
 
 ori_finder1 = ori_finder()
-alignments, virus_str, score = ori_finder1.local_alignment("virus_genomes/GCF_000862765.1_ViralProj15442_genomic.fna")
+alignments, virus_str, score = ori_finder1.local_alignment("virus_genomes/GCF_001806215.1_ViralProj349161_genomic.fna")
 ori_candidates = ori_finder1.obtain_ori_candidates(alignments, virus_str)
 print(ori_candidates)
 print(score)
+
+for a in alignments:
+    print(a.coordinates)
+
+ori_finder2 = ori_finder()
+alignments, virus_str, score = ori_finder2.local_alignment("virus_genomes/GCF_000862765.1_ViralProj15442_genomic.fna")
+ori_candidates = ori_finder2.obtain_ori_candidates(alignments, virus_str)
+print(ori_candidates)
+print(score)
 # ori_finder2 = ori_finder()
+
+for a in alignments:
+    print(a.coordinates)
 
 
 # from collections import Counter

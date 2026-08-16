@@ -30,10 +30,14 @@ while IFS= read -r taxid || [ -n "$taxid" ]; do
     # Strip any hidden carriage returns 
     taxid=$(echo "$taxid" | tr -d '\r')
 
+    #add extra line to remove spaces
+
     echo "----------------------------------------"
     echo "Downloading genome package for TaxID: $taxid from the NCBI database"
     
     #datasets download virus genome taxon "$taxid" --include genome --filename genome_packages/zipped/$taxid
+    
+    #specifically get ref seq
     datasets download genome taxon "$taxid" --assembly-source RefSeq --filename genome_packages/zipped/$taxid
 
     echo "Extracting files..."
@@ -41,6 +45,8 @@ while IFS= read -r taxid || [ -n "$taxid" ]; do
 
     echo "Moving FASTA file to 'Virus_Genomes' directory"
    # cp genome_packages/extracted/$taxid/ncbi_dataset/data/genomic.fna virus_genomes/$taxid.fna
+    
+    # multiple ref sequences can exist -> pulls all fasta files in the the 'data' subdirectory
     find genome_packages/extracted/$taxid/ncbi_dataset/data -type f -name "*.fna" -exec cp {} virus_genomes/ \;
     
 
