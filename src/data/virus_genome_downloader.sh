@@ -1,7 +1,7 @@
 set -e
 
 #no gaps in defining bash variables
-INPUT_FILE="taxids.txt"
+INPUT_FILE="virus_species_info.txt"
 
 #ensure that INPUT text file containing taxids exists
 if [ ! -f "$INPUT_FILE" ]; then
@@ -23,31 +23,31 @@ mkdir genome_packages/extracted
 
 echo "Starting processing of virus taxids..."
 
-while IFS= read -r taxid || [ -n "$taxid" ]; do
+while IFS= read -r line; do
+
     # Skip empty lines or comments 
-    [[ -z "$taxid" || "$taxid" =~ ^# ]] && continue
+    [[ -z "$line" || "$line" =~ ^# ]] && continue
 
     # Strip any hidden carriage returns 
-    taxid=$(echo "$taxid" | tr -d '\r')
+    line=$(echo "$line" | tr -d '\r')
 
-    #add extra line to remove spaces
+    IFS=',' read -r taxid organism_name <<< "$line"
 
     echo "----------------------------------------"
     echo "Downloading genome package for TaxID: $taxid from the NCBI database"
     
     #datasets download virus genome taxon "$taxid" --include genome --filename genome_packages/zipped/$taxid
-    
-    #specifically get ref seq
     datasets download genome taxon "$taxid" --assembly-source RefSeq --filename genome_packages/zipped/$taxid
 
     echo "Extracting files..."
     unzip -q genome_packages/zipped/$taxid -d genome_packages/extracted/$taxid
 
     echo "Moving FASTA file to 'Virus_Genomes' directory"
+
+    mkdir virus_genomes/${organism_name// /_}
+
    # cp genome_packages/extracted/$taxid/ncbi_dataset/data/genomic.fna virus_genomes/$taxid.fna
-    
-    # multiple ref sequences can exist -> pulls all fasta files in the the 'data' subdirectory
-    find genome_packages/extracted/$taxid/ncbi_dataset/data -type f -name "*.fna" -exec cp {} virus_genomes/ \;
+    find genome_packages/extracted/$taxid/ncbi_dataset/data -type f -name "*.fna" -exec cp {} virus_genomes/${organism_name// /_} \;
     
 
 done < "$INPUT_FILE"

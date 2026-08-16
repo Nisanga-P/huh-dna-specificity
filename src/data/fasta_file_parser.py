@@ -11,16 +11,16 @@ class fasta_file_parser():
 
         with open(fasta_file, "r") as f:
             for record in SeqIO.parse(f, "fasta"):
-                sequences_str.append(record.seq)
+                sequences_str.append(str(record.seq))
 
-                split_description = record.description.split(",")
+                split_description = record.description.split(" ")
 
-                info_str.append((split_description[0], split_description[1], record.seq))
+                info_str.append((split_description[0], split_description[1], str(record.seq)))
 
         return sequences_str, info_str
 
 
 parser = fasta_file_parser()
-a, b = parser.parse_fasta_file("text.txt")
+a, b = parser.parse_fasta_file("virus_protein_sequences.fasta")
 print(a)
 print(b)
