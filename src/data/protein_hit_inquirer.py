@@ -13,12 +13,12 @@ class protein_hit_inquirer:
 
 
     def get_organism_taxid_and_name(self):
+        # uses Entrez to obtain virus species records of protein accession ids in txt file
+        # (i.e. virus Rep protein -> organism of origin)
+        # saves in 'virus_species_info.txt' with every organism_name, taxid in separate line (matching order of accession_ids)
         Entrez.email = "nisangapathirana1@gmail.com"
 
         # # .efetch retrieves full data records from NCBI blast using accession number
-        # handle = Entrez.efetch(db = "protein", id=",".join(self.accession_ids), rettype="gb", retmode="text")
-        # records = SeqIO.parse(handle, "genbank") #network handle object -> Entrez.read()
-        # handle.close()
 
         for id in self.accession_ids:
             with Entrez.efetch(
@@ -43,9 +43,13 @@ class protein_hit_inquirer:
                 file.write(str(taxid) + "," + str(organism_name) + "\n")
 
     def download_amino_acid_sequences(self):
+        # downloads FASTA amino acid sequences of all protein accession ids in the txt file.
+        # saved in 'virus_proteins_sequences.fasta' following custom description > organism_name taxid
+
+
         Entrez.email = "nisangapathirana1@gmail.com"
 
-        cnt = 0 #to match it will info from self.organisms_info
+        cnt = 0 #to match it with correct info tuple from self.organisms_info
         fasta_sequences = []
 
         for id in self.accession_ids:
@@ -54,6 +58,7 @@ class protein_hit_inquirer:
                         ) as handle:
                         record = SeqIO.read(handle, "fasta")
                         fasta_sequences.append(str(record.seq))
+
 
         with open("virus_protein_sequences.fasta", "w", encoding="utf-8") as file:
             if not self.organisms_info:
@@ -77,7 +82,7 @@ class protein_hit_inquirer:
 
 
 
-inq = protein_hit_inquirer("text.txt")
+inq = protein_hit_inquirer("psiblast_hits/WDV_psiblast_hits_iteration1.txt")
 
 inq.get_organism_taxid_and_name()
 

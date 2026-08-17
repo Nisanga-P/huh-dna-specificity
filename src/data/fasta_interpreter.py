@@ -1,11 +1,13 @@
 from Bio import SeqIO
 
-class fasta_file_parser():
+class fasta_interpreter():
 
     # Description in each fasta file should follow specific format:
     # > organism_taxid, organism_name
 
-    def parse_fasta_file(self, fasta_file):
+    # In the pipeline, this applies to 'virus_protein_sequences.fasta' (viral Rep protein sequences)
+
+    def parse_custom_fasta_file(self, fasta_file):
         sequences_str = []
         info_str = []
 
@@ -20,7 +22,7 @@ class fasta_file_parser():
         return sequences_str, info_str
 
 
-parser = fasta_file_parser()
-a, b = parser.parse_fasta_file("virus_protein_sequences.fasta")
+parser = fasta_interpreter()
+a, b = parser.parse_custom_fasta_file("virus_protein_sequences.fasta")
 print(a)
 print(b)

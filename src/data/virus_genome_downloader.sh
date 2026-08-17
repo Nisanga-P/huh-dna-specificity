@@ -1,5 +1,7 @@
 set -e
 
+trap 'rm -rf genome_packages' EXIT
+
 #no gaps in defining bash variables
 INPUT_FILE="virus_species_info.txt"
 
@@ -15,13 +17,13 @@ if ! command -v datasets &> /dev/null; then
     exit 1
 fi
 
-echo "Found virus taxids file"
+echo "Found virus info file (containing taxids)"
 
 mkdir genome_packages
 mkdir genome_packages/zipped
 mkdir genome_packages/extracted
 
-echo "Starting processing of virus taxids..."
+echo "Starting processing..."
 
 while IFS= read -r line; do
 
@@ -34,7 +36,16 @@ while IFS= read -r line; do
     IFS=',' read -r taxid organism_name <<< "$line"
 
     echo "----------------------------------------"
-    echo "Downloading genome package for TaxID: $taxid from the NCBI database"
+
+    # do check to maker sure that it has not already been downloaded
+    if [ -d "virus_genomes/${organism_name// /_}" ]; then
+        echo "'$organism_name' genome already exists in virus_genomes. Skipping..."
+        echo "----------------------------------------"
+        continue
+    fi
+
+    echo "New virus!"
+    echo "Downloading genome package for Organism: $organism_name with taxid $taxid from the NCBI database"
     
     #datasets download virus genome taxon "$taxid" --include genome --filename genome_packages/zipped/$taxid
     datasets download genome taxon "$taxid" --assembly-source RefSeq --filename genome_packages/zipped/$taxid
@@ -48,10 +59,9 @@ while IFS= read -r line; do
 
    # cp genome_packages/extracted/$taxid/ncbi_dataset/data/genomic.fna virus_genomes/$taxid.fna
     find genome_packages/extracted/$taxid/ncbi_dataset/data -type f -name "*.fna" -exec cp {} virus_genomes/${organism_name// /_} \;
-    
 
+    echo "----------------------------------------"
+   
 done < "$INPUT_FILE"
-
-rm -rf genome_packages
 
 echo "Finished downloading all virus genomes."
