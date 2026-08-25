@@ -38,7 +38,7 @@ while IFS= read -r line; do
     echo "----------------------------------------"
 
     # do check to maker sure that it has not already been downloaded
-    if [ -d "virus_genomes/${organism_name// /_}" ]; then
+    if [ -d "virus_genomes/${taxid}_${organism_name// /_}" ]; then
         echo "'$organism_name' genome already exists in virus_genomes. Skipping..."
         echo "----------------------------------------"
         continue
@@ -55,10 +55,10 @@ while IFS= read -r line; do
 
     echo "Moving FASTA file to 'Virus_Genomes' directory"
 
-    mkdir virus_genomes/${organism_name// /_}
+    mkdir virus_genomes/${taxid}_${organism_name// /_}
 
    # cp genome_packages/extracted/$taxid/ncbi_dataset/data/genomic.fna virus_genomes/$taxid.fna
-    find genome_packages/extracted/$taxid/ncbi_dataset/data -type f -name "*.fna" -exec cp {} virus_genomes/${organism_name// /_} \;
+    find genome_packages/extracted/$taxid/ncbi_dataset/data -type f -name "*.fna" -exec cp {} virus_genomes/${taxid}_${organism_name// /_} \;
 
     echo "----------------------------------------"
    
