@@ -3,6 +3,19 @@ import sys
 
 from src.data.protein_hit_inquirer import protein_hit_inquirer
 
+'''
+
+MAIN for dataset pipeline.
+
+
+Has the following methods:
+ - wipe_existing_dataset
+ - remove_records (?)
+ - execute_pipeline -> adds to the dataset from a psi_blast hit of Rep proteins (given as a file of NCBI Accession IDs)
+
+'''
+
+
 
 # MAIN function!
 def execute_pipeline(accession_ids_txt):

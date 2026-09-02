@@ -33,7 +33,7 @@ class fasta_collector:
                     split_folder_name = path.name.split("_")
 
                     # extract taxid, organism_name info from folder name
-                    taxid = split_folder_name[0]
+                    taxid = int(split_folder_name[0])
                     organism_name = " ".join(split_folder_name[1:])
 
                     files_gen = (p for p in Path(path).iterdir() if p.is_file())
@@ -59,26 +59,49 @@ class fasta_collector:
 
 
 
-    def parse_virus_rep_fasta_file(self, fasta_file):
+    def _parse_virus_rep_fasta_file(self):
     # Description in each fasta file should follow specific format:
     # > organism_taxid, organism_name
 
     # In the pipeline, this applies to 'virus_protein_sequences.fasta' (viral Rep protein sequences)
 
-        with open(fasta_file, "r") as f:
+        with open(self.rep_sequences_file_path, "r") as f:
             for record in SeqIO.parse(f, "fasta"):
                 split_description = record.description.split(" ")
 
-                taxid = split_description[0]
+                taxid = int(split_description[0])
                 organism_name = " ".join(split_description[1:]) # join list of str with spaces
                 sequence_str = str(record.seq)
 
                 self.virus_rep_details[taxid] = (organism_name, sequence_str)
 
-        return
+
+    def get_sequence_collection(self):
+        '''
+        Searches through the (protein, DNA) fasta files generated upto this point in the pipeline,
+        and builds a preliminary dictionary for the dataset in the form:
+
+        {taxid : (virus_name, rep_seq, genome_seq)}
+        '''
+
+        # Run helper methods to search through the relevant fasta files, and initialise the required details dicts
+        self._virus_genome_folder_search()
+        self._parse_virus_rep_fasta_file()
+
+        for taxid in self.virus_rep_details:
+
+            virus_name, rep_seq = self.virus_rep_details.get(taxid)
+
+            _, genome_seq = self.virus_genome_details.get(taxid)
+
+            self.preliminary_rep_virus_dict[taxid] = (virus_name, rep_seq, genome_seq)
+
+        return self.preliminary_rep_virus_dict
+
 
 
 parser = fasta_collector("WDV_iter1")
 #parser.parse_custom_fasta_file("virus_protein_sequences.fasta")
-parser._virus_genome_folder_search()
-print(len(parser.virus_genome_details))
+parser.get_sequence_collection()
+print(len(parser.preliminary_rep_virus_dict))
+print(parser.preliminary_rep_virus_dict.get(223275))
