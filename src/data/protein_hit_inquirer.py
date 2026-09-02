@@ -29,7 +29,7 @@ class protein_hit_inquirer:
 
         
     #PRIVATE METHOD!
-    def _get_organism_taxid_and_name(self):
+    def get_organism_taxid_and_name(self):
 
 
         """
@@ -93,14 +93,15 @@ class protein_hit_inquirer:
         Downloads FASTA amino acid sequences of all protein accession ids in the accession_id txt file PROVIDED that the virus was not
         already encountered previously in the dataset (checked using current 'all_viruses_in_dataset.txt').
 
+        Each FASTA sequence follows a custom description header of > organism_name taxid
+
         If a repeat is found, details are saved in 'repeats.txt' for future reference (indicator to assess if there is good coverage of Rep proteins across phylogenetic tree).
         Updates 'all_viruses_in_dataset.txt' with new additions to the dataset.
+
+        Note: 'get_organism_taxid_and_name' should run prior to this function (if not, it will call it itself and still successfully run
+        but may create conflicts with bash script downloading virus genomes as it updates 'all_viruses_in_dataset.txt')
         
         """
-
-        # downloads FASTA amino acid sequences of all protein accession ids in the txt file.
-        # saved in 'virus_proteins_sequences.fasta' following custom description > organism_name taxid
-
 
         # hashset containing taxid of viruses already in the dataset -> for fast lookup in checking repeats later
         all_viruses_taxids = set()
@@ -115,14 +116,16 @@ class protein_hit_inquirer:
                 all_viruses_taxids.add(int(line.strip()))
 
 
-        # run first to save virus details into 'self.organisms_info'
-        self._get_organism_taxid_and_name()
+        if not self.organisms_info:
+            # ensure it was run first to save virus details into 'self.organisms_info'
+            # note in the actual pipeline -> ensure that this was run separately prior (amino acids sequences should be downloaded AFTER the virus_genomes)
+            self.get_organism_taxid_and_name()
 
         Entrez.email = "nisangapathirana1@gmail.com"
 
         destination = "data/raw/downloads/rep_protein_sequences/" + self.ids_file_name + ".fasta"
 
-        with open(destination, "w", encoding="utf-8") as file:
+        with open(destination, "a", encoding="utf-8") as file:
 
             # as above, just as a good practice
             batch_size = 200
@@ -137,7 +140,7 @@ class protein_hit_inquirer:
                         organism_name, taxid = self.organisms_info[record.id]
 
                         if int(taxid) in all_viruses_taxids:
-                            print(f"Virus: {organism_name} + Rep details already in database! Save details in 'repeats.txt'. Skipping...")
+                            print(f"{organism_name} + Rep details already in database! Save details in 'repeats.txt'. Skipping...")
                             repeat_virus_info.append((organism_name, taxid))
 
                         else:
@@ -168,10 +171,3 @@ inq = protein_hit_inquirer("WDV_iter1.txt")
 print(inq.ids_file_name)
 
 inq.download_amino_acid_sequences()
-
-
-
-# write similar function to obtain protein fasta file using accession id, and write 
-# exactly according to fasta file parser format
-
-# configure virus genome downloader to match this

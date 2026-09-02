@@ -3,7 +3,12 @@ set -e
 trap 'rm -rf genome_packages' EXIT
 
 #no gaps in defining bash variables
-INPUT_FILE="virus_species_info.txt"
+INPUT_FILE="$1"
+
+# The name of the 'psi_blast' run (this must be passed in as an argument!)
+SUBFOLDER_NAME="$2"
+
+ALL_VIRUS_RECORD_FILE="data/raw/generated/all_viruses_in_dataset.txt"
 
 #ensure that INPUT text file containing taxids exists
 if [ ! -f "$INPUT_FILE" ]; then
@@ -23,6 +28,8 @@ mkdir genome_packages
 mkdir genome_packages/zipped
 mkdir genome_packages/extracted
 
+mkdir data/raw/downloads/virus_genomes/"$SUBFOLDER_NAME"
+
 echo "Starting processing..."
 
 while IFS= read -r line; do
@@ -33,16 +40,32 @@ while IFS= read -r line; do
     # Strip any hidden carriage returns 
     line=$(echo "$line" | tr -d '\r')
 
-    IFS=',' read -r taxid organism_name <<< "$line"
+    IFS=',' read -r organism_name taxid <<< "$line"
 
     echo "----------------------------------------"
 
-    # do check to maker sure that it has not already been downloaded
-    if [ -d "virus_genomes/${taxid}_${organism_name// /_}" ]; then
-        echo "'$organism_name' genome already exists in virus_genomes. Skipping..."
-        echo "----------------------------------------"
-        continue
-    fi
+    while IFS= read -r second_line; do
+        second_line=${second_line//$'\r'/}
+
+        [[ -z "$second_line" || "$second_line" =~ ^# ]] && continue
+
+        if [[ "$second_line" == "$taxid" ]]; then
+            echo "'$organism_name' genome already exists in virus_genomes. Skipping..."
+            echo "----------------------------------------"
+            continue 2
+        fi
+
+    done < "$ALL_VIRUS_RECORD_FILE"
+
+
+
+    
+    # # do check to maker sure that it has not already been downloaded
+    # if [ -d "data/raw/downloads/virus_genomes/${taxid}_${organism_name// /_}" ]; then
+    #     echo "'$organism_name' genome already exists in virus_genomes. Skipping..."
+    #     echo "----------------------------------------"
+    #     continue
+    # fi
 
     echo "New virus!"
     echo "Downloading genome package for Organism: $organism_name with taxid $taxid from the NCBI database"
@@ -55,10 +78,10 @@ while IFS= read -r line; do
 
     echo "Moving FASTA file to 'Virus_Genomes' directory"
 
-    mkdir virus_genomes/${taxid}_${organism_name// /_}
+    mkdir data/raw/downloads/virus_genomes/"$SUBFOLDER_NAME"/${taxid}_${organism_name// /_}
 
    # cp genome_packages/extracted/$taxid/ncbi_dataset/data/genomic.fna virus_genomes/$taxid.fna
-    find genome_packages/extracted/$taxid/ncbi_dataset/data -type f -name "*.fna" -exec cp {} virus_genomes/${taxid}_${organism_name// /_} \;
+    find genome_packages/extracted/$taxid/ncbi_dataset/data -type f -name "*.fna" -exec cp {} data/raw/downloads/virus_genomes/"$SUBFOLDER_NAME"/${taxid}_${organism_name// /_} \;
 
     echo "----------------------------------------"
    
