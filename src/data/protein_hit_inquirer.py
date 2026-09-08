@@ -4,7 +4,7 @@ from Bio import SeqIO
 import time
 
 class protein_hit_inquirer:
-    def __init__(self, accession_ids_txt):
+    def __init__(self, iteration_name):
 
         """
         Constructor for protein hit inqurier.
@@ -14,12 +14,15 @@ class protein_hit_inquirer:
 
         """
 
-        ids_file_path = "data/raw/generated/psiblast_hits/" + accession_ids_txt
+        ids_file_path = "data/raw/generated/psiblast_hits/" + iteration_name + ".txt"
 
-        with open(ids_file_path) as f:
-            accession_ids = [line.strip() for line in f if line.strip()]
+        try:
+            with open(ids_file_path) as f:
+                accession_ids = [line.strip() for line in f if line.strip()]
+        except FileNotFoundError:
+            print("ERROR: No matching file in 'psiblast_hits' folder")
 
-        self.ids_file_name = str(accession_ids_txt).removesuffix(".txt")
+        self.ids_file_name = iteration_name
 
         self.accession_ids = accession_ids
 
@@ -166,8 +169,8 @@ class protein_hit_inquirer:
 
 
 
-inq = protein_hit_inquirer("WDV_iter1.txt")
+# inq = protein_hit_inquirer("WDV_iter1.txt")
 
-print(inq.ids_file_name)
+# print(inq.ids_file_name)
 
-inq.download_amino_acid_sequences()
+# inq.download_amino_acid_sequences()

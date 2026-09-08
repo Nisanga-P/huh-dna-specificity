@@ -2,6 +2,11 @@ set -e
 
 trap 'rm -rf genome_packages' EXIT
 
+# ensure NCBI datasets in 'tools' is accessible by the bash script (so a script using it can be run from anywhere)
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+export PATH="$REPO_ROOT/.tools:$PATH" 
+
 #no gaps in defining bash variables
 INPUT_FILE="$1"
 

@@ -2,9 +2,10 @@
 name = "huh-dna-specificity"
 version = "0.1.0"
 description = "Add your description here"
-requires-python = ">=3.11"
+requires-python = ">=3.12"
 dependencies = [
     "biopython>=1.88",
+    "esm",
     "fair-esm>=2.0.0",
     "ipykernel>=7.3.0",
     "jupyter>=1.1.1",
@@ -13,5 +14,8 @@ dependencies = [
     "pandas>=3.0.5",
     "pymol-open-source>=3.2.0a0",
     "scipy>=1.17.1",
-    "torch>=2.13.0",
+    "torch==2.11.0",
 ]
+
+[tool.uv.sources]
+esm = { git = "https://github.com/Biohub/esm.git", rev = "main" }

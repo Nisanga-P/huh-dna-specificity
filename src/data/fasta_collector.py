@@ -1,6 +1,7 @@
 from Bio import SeqIO
 from pathlib import Path
 
+
 class fasta_collector:
 
     def __init__(self, iteration_name):
@@ -10,8 +11,6 @@ class fasta_collector:
 
         self.virus_rep_details = {}
         self.virus_genome_details = {}
-
-        self.preliminary_rep_virus_dict = {}
 
     # PRIVATE METHOD!
     def _virus_genome_folder_search(self):
@@ -24,41 +23,42 @@ class fasta_collector:
         
         '''
 
-        # run in try_catch block in case 'iteration_name' is not valid (i.e. no virus details saved under such an iteration)
-        try:
-            root_dir = Path(self.virus_genome_folder_path)
-
-            for path in root_dir.iterdir():
-                if path.is_dir():
-                    split_folder_name = path.name.split("_")
-
-                    # extract taxid, organism_name info from folder name
-                    taxid = int(split_folder_name[0])
-                    organism_name = " ".join(split_folder_name[1:])
-
-                    files_gen = (p for p in Path(path).iterdir() if p.is_file())
-        
-                    # Return the first file path (i.e. FIRST reference genome if multiple), or None if the directory has no files
-                    first_ref_genome_saved = next(files_gen, None)
-
-                    # double check if reference genome has been found
-                    if first_ref_genome_saved.is_file():
-                        with open(first_ref_genome_saved, "r") as f:
-                            
-                            for record in SeqIO.parse(f, "fasta"):
-
-                                ref_genome_str = str(record.seq)
-
-                                self.virus_genome_details[taxid] = (organism_name, ref_genome_str)
-                    else:
-                        # no reference genome has been downloaded 
-                        # should be taken care of later
-                        self.virus_genome_details[taxid] = (organism_name, None)
-        except FileNotFoundError as e:
-            print("ERROR: fasta_collector cannot find the virus details for iteration! Double check 'iteration_name' or run methods in 'protein_hit_inquirer.py' first.")
+        if not Path(self.virus_genome_folder_path).exists():
+            raise FileNotFoundError("ERROR: fasta_collector cannot find the virus details for iteration! Double check 'iteration_name' or run methods in 'protein_hit_inquirer.py' first.")
 
 
+        root_dir = Path(self.virus_genome_folder_path)
 
+        for path in root_dir.iterdir():
+            if path.is_dir():
+                split_folder_name = path.name.split("_")
+
+                # extract taxid, organism_name info from folder name
+                taxid = int(split_folder_name[0])
+                organism_name = " ".join(split_folder_name[1:])
+
+                files_gen = (p for p in Path(path).iterdir() if p.is_file())
+    
+                # Return the first file path (i.e. FIRST reference genome if multiple), or None if the directory has no files
+                first_ref_genome_saved = next(files_gen, None)
+
+                # double check if reference genome has been found
+                if first_ref_genome_saved.is_file():
+                    with open(first_ref_genome_saved, "r") as f:
+                        
+                        for record in SeqIO.parse(f, "fasta"):
+
+                            ref_genome_str = str(record.seq)
+
+                            self.virus_genome_details[taxid] = (organism_name, ref_genome_str)
+                else:
+                    # no reference genome has been downloaded 
+                    # should be taken care of later
+                    self.virus_genome_details[taxid] = (organism_name, None)
+       
+
+
+    # PRIVATE METHOD!
     def _parse_virus_rep_fasta_file(self):
     # Description in each fasta file should follow specific format:
     # > organism_taxid, organism_name
@@ -84,6 +84,8 @@ class fasta_collector:
         {taxid : (virus_name, rep_seq, genome_seq)}
         '''
 
+        preliminary_rep_virus_dict = {}
+
         # Run helper methods to search through the relevant fasta files, and initialise the required details dicts
         self._virus_genome_folder_search()
         self._parse_virus_rep_fasta_file()
@@ -94,14 +96,12 @@ class fasta_collector:
 
             _, genome_seq = self.virus_genome_details.get(taxid)
 
-            self.preliminary_rep_virus_dict[taxid] = (virus_name, rep_seq, genome_seq)
+            preliminary_rep_virus_dict[taxid] = (virus_name, rep_seq, genome_seq)
 
-        return self.preliminary_rep_virus_dict
+        return preliminary_rep_virus_dict
 
 
 
-parser = fasta_collector("WDV_iter1")
-#parser.parse_custom_fasta_file("virus_protein_sequences.fasta")
-parser.get_sequence_collection()
-print(len(parser.preliminary_rep_virus_dict))
-print(parser.preliminary_rep_virus_dict.get(223275))
+# parser = fasta_collector("WDV_iter1")
+# #parser.parse_custom_fasta_file("virus_protein_sequences.fasta")
+# parser.get_sequence_collection()
