@@ -1,0 +1,12 @@
+Chicken virus mg5_2876,2720907
+Marmot associated feces virus 4,2800899
+Peromfec virus RodF8_96,2929260
+Porcine serum associated circular DNA virus 2,2517212
+Caesalpinia ferrea associated virus,2771212
+Duck faeces associated circular DNA virus 3,1843770
+Vehemenivirus recresis,3433149
+Giardia-associated CRESS DNA virus 4,2766568
+Entamoeba-associated CRESS DNA virus 3,2766563
+Ruminococcoides intestinihominis,3133161
+Mouse associated cyclovirus 1,2169856
+Lacrimispora saccharolytica,84030

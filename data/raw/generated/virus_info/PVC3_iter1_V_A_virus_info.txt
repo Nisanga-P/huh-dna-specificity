@@ -1,0 +1,20 @@
+Porprismacovirus canid3,3431834
+Porcine associated porprismacovirus 10,2170117
+Fly associated circular virus 4,2293284
+Chicken smacovirus mg7_67,2720966
+Goat associated porprismacovirus,2530493
+Chimpanzee associated porprismacovirus 1,2170109
+Odonata-associated circular virus 21,1592122
+Human associated huchismacovirus 3,2169936
+Avon-Heathcote Estuary associated circular virus 29,1618253
+Delphin virus 1,2817834
+Fire ant associated circular virus 1,2293280
+Papio cynocephalus associated smacovirus,2213168
+Pea yellow stunt virus,1436892
+Ctenophore-associated circular virus 4,1778561
+Alces alces faeces associated smacovirus MP78,2219142
+Cattle blood-associated circovirus-like virus,2077298
+Howler monkey associated porprismacovirus 1,2170112
+Gorilla associated porprismacovirus 1,2170111
+Lynx rufus smacovirus 2,2592415
+Lemur associated porprismacovirus 1,2170115

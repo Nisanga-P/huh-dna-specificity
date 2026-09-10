@@ -1,0 +1,24 @@
+Gorilla associated porprismacovirus 1,2170111,PVC3_iter1_V_A
+WigFec circovirus 1,2873951,HLV_iter1_V_A
+Wolvfec circovius,2817738,PCV_iter1_V_A
+Penguin circovirus,2676049,PCV_iter1_V_A
+Muscovy duck circovirus,257468,PCV_iter1_V_A
+Paguma larvata circovirus,2294094,PCV_iter1_V_A
+Llama faeces associated circular DNA virus-1,1843771,PCV_iter2_V_A
+Mosquito circovirus,1611039,PCV_iter2_V_A
+Janusivirus portis,3429998,PCV_iter2_V_A
+Marmot associated feces virus 6,2800901,PCV_iter2_V_A
+Golden silk orbweaver associated circular virus 1,2293292,PCV_iter2_V_A
+Cattle blood-associated circovirus-like virus,2077298,EAV3_iter1_V_A
+Pelorivirus melia,3431561,EAV3_iter1_V_A
+Woodlouse hunter spider associated circular virus 1,2293310,EAV3_iter1_V_A
+Mongoose-associated circovirus,2879287,EAV3_iter2_V_A
+Janusivirus portis,3429998,EAV3_iter2_V_A
+Lake Sarah-associated circular virus-27,1685754,CTS_iter1_V_A
+Ninurtavirus momolo,3431128,CTS_iter1_V_A
+Myodefec virus RodL3_773,2929258,CTS_iter2_V_A
+Pimoid spider associated circular virus 2,2293298,CTS_iter2_V_A
+Werosea circovirus,2682467,CTS_iter2_V_A
+Caesalpinia ferrea associated virus,2771212,CVM_iter1_V_A
+Vehemenivirus recresis,3433149,CVM_iter1_V_A
+Entamoeba-associated CRESS DNA virus 3,2766563,CVM_iter1_V_A

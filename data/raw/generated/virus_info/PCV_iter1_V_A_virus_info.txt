@@ -1,0 +1,30 @@
+Porcine circovirus 2,85708
+Equine circovirus 1,2834422
+Bat circovirus,1329650
+Canine circovirus,1194757
+Circovirus kiore,3052126
+Sonfela circovirus 2,2771381
+Beaked whale circovirus,2598785
+Wolvfec circovius,2817738
+Penguin circovirus,2676049
+Muscovy duck circovirus,257468
+Mongoose-associated circovirus,2879287
+Paguma larvata circovirus,2294094
+Human circovirus 1,3025750
+Dipodfec virus UA23Rod_1805,2929287
+Dragonfly associated cyclovirus 1,1234879
+Army ant associated cyclovirus 5,3017833
+Bat faeces associated cyclovirus 4,2050587
+Caesalpinia ferrea associated virus,2771212
+Werosea cyclovirus,2714177
+Lake Sarah-associated circular virus-27,1685754
+Hermit crab associated circular genome,1692251
+Odonata-associated circular virus-4,1592124
+Red panda feces-associated circular DNA virus 14,2863967
+Northern red-backed vole stool-associated circular virus 117,2714166
+Farfantepenaeus duorarum circovirus,1380894
+Giardia-associated CRESS DNA virus 1,2766565
+Indian encephalitis associated cyclovirus,1755290
+Nervillivirus flovetense,3431088
+Sigmofec virus UA08Rod_20100,2929266
+Chicken stool associated circular virus 1,2109373

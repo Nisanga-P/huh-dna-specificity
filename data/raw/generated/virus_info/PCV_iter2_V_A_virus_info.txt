@@ -1,0 +1,20 @@
+Pacific flying fox associated cyclovirus-1,1795983
+Llama faeces associated circular DNA virus-1,1843771
+Robaratusivirus semberis,3432171
+Mosquito circovirus,1611039
+Janusivirus portis,3429998
+Myodefec virus RodL3_773,2929258
+Vehemenivirus recresis,3433149
+Marmot associated feces virus 6,2800901
+Torentivirus zocris,3432919
+Dipodfec virus UA06Rod_119,2929248
+Volantivirus zuncris,3433292
+Giant panda circovirus 3,2016458
+Longjawed orbweaver circular virus 2,2293295
+Ctenophore-associated circular virus 1,1778558
+Golden silk orbweaver associated circular virus 1,2293292
+Dragonfly larvae associated circular virus-2,1454023
+Dragonfly larvae associated circular virus-3,1454024
+Ninurtavirus momolo,3431128
+Holcus lanatus-associated virus,2282643
+Yaviravirus kapata,3433542

@@ -1,0 +1,20 @@
+Entamoeba-associated CRESS DNA virus 3,2766563
+Odonata-associated circular virus-14,1592114
+Cattle blood-associated circovirus-like virus,2077298
+Spinybacked orbweaver circular virus 1,2293305
+Valinorvirus eriador,2956631
+Pelorivirus melia,3431561
+Sewage-associated circular DNA virus-20,1592087
+Panicum ecklonii-associated virus,2282645
+Raccoon dog stool-Circo-like_virus,2829140
+Woodlouse hunter spider associated circular virus 1,2293310
+Pacific flying fox faeces associated circular DNA virus-6,1796015
+Pleurochrysis carterae circular virus,2057942
+Gull circovirus,400121
+Cyclovirus ZM36a,1506568
+Capybara virus 10_cap1_55,2585037
+Gallibacter intestinalis,2779356
+robinz virus RP_620,2886401
+Candidatus Xianfuyuplasma coldseepsis,2782163
+Ruminococcus bromii,40518
+Finch circovirus,400122

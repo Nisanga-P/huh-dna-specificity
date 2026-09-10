@@ -158,4 +158,4 @@ def execute_pipeline():
     create_new_dataset()
 
 
-add_records("FBNYY_iter1_V_A", "PCV")
+add_records("CVM_iter1_V_A", "PCV")
