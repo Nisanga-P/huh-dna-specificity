@@ -1,0 +1,28 @@
+Wheat dwarf virus,10834
+Rice latent virus 1,2012856
+Chickpea chlorosis Australia virus,1302848
+Dragonfly-associated mastrevirus,1249648
+Sweet potato symptomless virus 1,603333
+Axonopus compressus streak virus,1476487
+Maize streak Reunion virus,1182518
+Capulavirus medicagonis,1306546
+Camellia chlorotic dwarf-associated virus,2122733
+Pouzolzia golden mosaic virus,1225069
+Tomato leaf curl Namakely virus,439421
+Mulberry mosaic dwarf associated virus,1631303
+Tomato leaf curl Cotabato virus,507475
+Gossypium darwinii symptomless virus,509531
+Pedilanthus leaf curl virus,619631
+Sida yellow vein Vietnam virus,390441
+Sri Lankan cassava mosaic virus-[Colombo],223328
+Mirabilis leaf curl virus,1431395
+Pepper yellow dwarf virus - Mexico,1987360
+Ocimum golden mosaic virus,2664940
+Sauropus leaf curl virus,1130981
+East African cassava mosaic Zanzibar virus,223275
+Sida micrantha mosaic virus,228897
+Cotton leaf curl Bangalore virus,307110
+Rhynchosia golden mosaic virus,117198
+Pepper yellow leaf curl Indonesia virus,292477
+Tomato leaf curl Burkina Faso virus,1955054
+Tomato leaf curl Malaysia virus,223346

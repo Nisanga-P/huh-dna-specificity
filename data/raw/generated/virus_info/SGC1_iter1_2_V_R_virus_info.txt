@@ -1,0 +1,25 @@
+Chicken genomovirus mg8_401,2720952
+Black robin associated gemykibivirus 1,1391037
+Gerygone associated gemycircularvirus 2,1985382
+Soybean associated gemycircularvirus 1,1985413
+Varroa mite associated genomovirus 1,2077299
+Olive associated gemycircularvirus 1,2518602
+Thrips-associated genomovirus 4,1941239
+Tortoise genomovirus 9,2582892
+Citrus Tunisia genomovirus 1b,2705543
+Tubeweb spider associated circular virus 1,2293308
+Bovine associated gemykibivirus 1,2004486
+Apis mellifera genomovirus 2,2563838
+Northern red-backed vole stool-associated gemycircularvirus 110,2714170
+Lolium perenne-associated virus,2282644
+Fusarium graminearum gemytripvirus 1,2708635
+Tomato apical leaf curl virus,2060142
+Faeces associated gemycircularvirus 12,1391027
+Limeum africanum associated virus,2093276
+Euphorbia caput-medusae latent virus,1853865
+Bromus catharticus striate mosaic virus,936005
+Hollyhock leaf curl virus,163655
+Watermelon chlorotic stunt virus,35341
+West African Asystasia virus 1,1046573
+Pacific flying fox faeces associated gemycircularvirus-7,1795999
+Apis mellifera genomovirus 2,2563838

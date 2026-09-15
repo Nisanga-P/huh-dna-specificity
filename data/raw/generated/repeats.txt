@@ -22,3 +22,5 @@ Werosea circovirus,2682467,CTS_iter2_V_A
 Caesalpinia ferrea associated virus,2771212,CVM_iter1_V_A
 Vehemenivirus recresis,3433149,CVM_iter1_V_A
 Entamoeba-associated CRESS DNA virus 3,2766563,CVM_iter1_V_A
+Hollyhock leaf curl virus,163655,SGC1_iter1_2_V_R
+Apis mellifera genomovirus 2,2563838,SGC1_iter1_2_V_R

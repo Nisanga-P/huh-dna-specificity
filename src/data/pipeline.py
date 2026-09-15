@@ -27,7 +27,7 @@ Has the following methods:
 def create_new_dataset(name):
     dataset_file = "data/raw/" + name + ".csv"
 
-    columns = ["taxid", "virus_name", "sDBM_pos", "sDBM_sim_gap", "ori_seq", "ori_align_score", "iteration_name", "rep_amino_acid_seq"]
+    columns = ["taxid", "virus_name", "sDBM_pos", "sDBM", "sDBM_sim_gap", "ori_seq", "ori_align_score", "iteration_name", "rep_amino_acid_seq"]
 
     if not Path(dataset_file).exists():
         df = pd.DataFrame(columns=columns)
@@ -158,4 +158,4 @@ def execute_pipeline():
     create_new_dataset()
 
 
-add_records("CVM_iter1_V_A", "PCV")
+add_records("SGC1_iter2_V_R", "WDV")

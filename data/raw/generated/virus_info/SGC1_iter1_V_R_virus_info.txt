@@ -1,0 +1,29 @@
+Sclerotinia sclerotiorum hypovirulence associated DNA virus 1,664785
+Sewage-associated gemycircularvirus 6,1519401
+Lama associated gemycircularvirus 1,1985385
+Finch associated genomovirus 5,2576457
+Giant house spider associated circular virus 1,2293288
+Blackfly genomovirus 7,2586206
+Pteropus associated gemycircularvirus 3,1985397
+Faeces associated gemycircularvirus 20,1843740
+Oxalis corniculata genomoviridae,2739874
+Giant panda associated gemycircularvirus,2016461
+Momordica charantia associated gemycircularvirus,2291613
+Hypericum japonicum associated circular DNA virus,1367218
+Plant associated genomovirus 15,2584386
+Pacific flying fox faeces associated gemycircularvirus-2,1795994
+Euphorbia heterophylla associated gemycircularvirus,2291614
+Alces alces faeces associated genomovirus MP84,2219116
+Pteropus associated gemycircularvirus 4,1985398
+Thrips-associated genomovirus 1,1941233
+Tortoise genomovirus 10,2582871
+Fur seal associated gemycircularvirus 1,1985380
+Termite associated circular virus 2,2108550
+Capybara genomovirus 1,2582936
+Bark beetle-associated genomovirus 2,2230897
+Tick-associated genomovirus 3,2025479
+Sierra dome spider associated circular virus 1,2293299
+Plant associated genomovirus 22,2584394
+Badger associated gemykibivirus 1,1634484
+Gemycircularvirus SL1,1588764
+Mongoose feces-associated gemycircularvirus a,1634485
