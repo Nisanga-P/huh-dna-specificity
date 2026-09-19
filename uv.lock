@@ -995,6 +995,7 @@ dependencies = [
     { name = "numpy" },
     { name = "pandas" },
     { name = "pymol-open-source" },
+    { name = "requests" },
     { name = "scipy" },
     { name = "torch" },
 ]
@@ -1010,6 +1011,7 @@ requires-dist = [
     { name = "numpy", specifier = ">=2.4.6" },
     { name = "pandas", specifier = ">=3.0.5" },
     { name = "pymol-open-source", specifier = ">=3.2.0a0" },
+    { name = "requests", specifier = ">=2.34.2" },
     { name = "scipy", specifier = ">=1.17.1" },
     { name = "torch", specifier = "==2.11.0" },
 ]
