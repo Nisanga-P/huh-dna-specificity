@@ -10,7 +10,7 @@ BASE_URL = "https://bioinfo-mml.sjtu.edu.cn/oriTDB2/browse_oriT_result.php?acc={
 OUTPUT_CSV = "oritdb_pairs.csv"
 
 FALLBACK_START_ACC = 100001   # only used if the CSV doesn't exist yet / is empty
-BATCH_SIZE = 200                # how many *valid* records to pull this run
+BATCH_SIZE = 500                # how many *valid* records to pull this run
 SLEEP_SECONDS = 1.5             # conservative delay between requests
 MAX_CONSECUTIVE_MISSES = 150    # stop early if we hit a long dead zone (end of valid IDs)
 
