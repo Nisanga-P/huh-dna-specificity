@@ -24,3 +24,10 @@ Vehemenivirus recresis,3433149,CVM_iter1_V_A
 Entamoeba-associated CRESS DNA virus 3,2766563,CVM_iter1_V_A
 Hollyhock leaf curl virus,163655,SGC1_iter1_2_V_R
 Apis mellifera genomovirus 2,2563838,SGC1_iter1_2_V_R
+Papio cynocephalus associated smacovirus,2213168,BFAS_iter1_V_A
+Chicken smacovirus mg7_67,2720966,BFAS_iter1_V_A
+Cattle blood-associated circovirus-like virus,2077298,BFAS_iter1_V_A
+Goat associated porprismacovirus,2530493,BFAS_iter1_V_A
+Fly associated circular virus 4,2293284,BFAS_iter1_V_A
+Lemur associated porprismacovirus 1,2170115,BFAS_iter1_V_A
+Chimpanzee associated porprismacovirus 1,2170109,BFAS_iter1_V_A

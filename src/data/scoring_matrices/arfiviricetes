@@ -1,0 +1,16 @@
+# arfiviricetes ori substitution matrix
+# rows = target (genome) base, columns = query (ori) symbol; -inf = disallowed
+       A      C      G      T      R      Y      S      W      K      M      H      D      N
+A   50.0   -inf   -inf    0.6   -inf    1.2   -inf    0.9   -inf    5.9    2.6    1.7    4.3
+C   -inf   50.0   -inf    0.5   -inf    2.7   -inf    0.3   -inf    1.1    2.5    1.6    1.7
+G   -inf   -inf   -inf    0.0   -inf    0.7   -inf    0.1   -inf    0.9    1.1    3.3    1.7
+T   -inf   -inf   -inf    8.6   -inf    4.7   -inf    8.4   -inf    1.6    3.3    3.0    2.2
+R   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf
+Y   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf
+S   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf
+W   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf
+K   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf
+M   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf
+H   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf
+D   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf
+N   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf   -inf

@@ -21,6 +21,7 @@ FIELDNAMES = [
 
 
 def get_resume_point():
+
     """Look at the existing CSV (if any) and figure out where to continue."""
     if not os.path.exists(OUTPUT_CSV):
         return FALLBACK_START_ACC
@@ -36,7 +37,8 @@ def get_resume_point():
             except (ValueError, KeyError):
                 continue
 
-    return (max_acc + 1) if max_acc is not None else FALLBACK_START_ACC
+    return 110001
+ #   return (max_acc + 1) if max_acc is not None else FALLBACK_START_ACC
 
 
 def grab(pattern, text, flags=re.MULTILINE):

@@ -1,0 +1,24 @@
+Bovine faeces associated smacovirus 4,1843752
+Papio cynocephalus associated smacovirus,2213168
+Smacoviridae sp.,2715094
+Camel associated drosmacovirus 1,2169876
+Human associated huchismacovirus 2,2169935
+Panthera leo smacovirus 1,2592416
+Chicken smacovirus mg7_67,2720966
+Chicken associated smacovirus,1932006
+Sheep faeces associated smacovirus 3,1843758
+Cattle blood-associated circovirus-like virus,2077298
+Porcine associated porprismacovirus,2496634
+Rat associated porprismacovirus 1,2170126
+Goat associated porprismacovirus,2530493
+Capybara associated smacovirus 1_cap1_104,2585076
+Turkey associated porprismacovirus 1,2170130
+Fly associated circular virus 4,2293284
+Felismacovirus canid1,3428658
+Lemur associated porprismacovirus 1,2170115
+Pig stool associated circular ssDNA virus GER2011,1114942
+Bovismacovirus bovas3,3427595
+Uewvirus yahnais,3433048
+Chimpanzee associated porprismacovirus 1,2170109
+Chlorocebus cynosuros associated smacovirus,2213167
+Macaca mulatta feces associated virus 2,2499224

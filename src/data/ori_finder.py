@@ -176,14 +176,6 @@ class arfiviricetes_ori_finder(ori_finder):
         self.aligner.substitution_matrix = sub_matrix
 
 
-
-
-# child = repensiviricetes_ori_finder()
-
-# child2 = arfiviricetes_ori_finder()
-
-
-
 # parser = fasta_collector("WDV_iter1")
 # #parser.parse_custom_fasta_file("virus_protein_sequences.fasta")
 # prelim = parser.get_sequence_collection()
