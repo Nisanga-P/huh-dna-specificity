@@ -142,6 +142,6 @@ def main():
 
     print(f"Done: {rows_written} rows appended to {args.out}")
 
-
+# can only be executed as a standalone program
 if __name__ == "__main__":
     main()
