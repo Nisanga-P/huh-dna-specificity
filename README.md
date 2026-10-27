@@ -10,6 +10,7 @@ sDBM.
 
 ## Project Structure
 
+'''
 huh-dna-specificity/
 ├── data/
 │   └── embeddings/          # Input tensors (download or generate separately)
@@ -36,6 +37,7 @@ huh-dna-specificity/
 ├── .gitignore
 ├── pyproject.toml
 └── README.md
+'''
 
 ## Citations
 
