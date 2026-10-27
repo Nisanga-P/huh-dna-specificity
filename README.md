@@ -10,7 +10,7 @@ sDBM.
 
 ## Project Structure
 
-'''
+```text
 huh-dna-specificity/
 ├── data/
 │   └── embeddings/          # Input tensors (download or generate separately)
@@ -26,7 +26,7 @@ huh-dna-specificity/
 │   ├── data_setup_classifier.py       # loads data (+ dataloader) for binary classifier model
 │   ├── data_setup_predictor.py        # loads data (+ dataloader) for ori predictor model
 │   ├── losses.py                      # custom weighted cross-entropy function
-│   └── train_classifer.py             # training entry point for classifier models
+│   └── train_classifier.py             # training entry point for classifier models
 │   └── train_predictor.py             # training entry point for predictor models
 ├── notebooks/
 │   ├── data_cleaning/                 # scripts used for cleaning the dataset, and obtaining the final (concatenated) csv dataset
@@ -37,7 +37,7 @@ huh-dna-specificity/
 ├── .gitignore
 ├── pyproject.toml
 └── README.md
-'''
+```
 
 ## Citations
 
