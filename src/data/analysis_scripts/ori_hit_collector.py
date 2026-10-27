@@ -2,9 +2,6 @@
 """
 Collect the top-N local-alignment hits of an ori query against virus genomes.
 
-Layout expected:
-    virus_genomes/<subfolder>/<virus_folder>/*.fasta (or .fa/.fna/.fasta)
-
 For every virus folder in the chosen subfolder, the first fasta file (sorted by name)
 is used, and within it only the first record. Results are APPENDED to one CSV, one row
 per virus:
@@ -24,7 +21,7 @@ from pathlib import Path
 from Bio import SeqIO
 from Bio.Align import PairwiseAligner, substitution_matrices
 
-# ----------------------------- CONFIG (edit me) -----------------------------
+
 GENOMES_ROOT = Path("data/raw/downloads/virus_genomes")
 MATRIX_DIR = Path("src/data/scoring_matrices")             # holds files named after the matrix classes
 MATRIX_FILES = {                          # matrix class -> file in MATRIX_DIR
@@ -38,7 +35,7 @@ OPEN_GAP, EXTEND_GAP = -math.inf, -math.inf
 QUERY = "HMDWNYTAC"
 ORI_LEN = len(QUERY)                      # 9
 N_HITS = 3
-# ----------------------------------------------------------------------------
+
 
 FIELDS = (["matrix_class"]
           + [f"{col}_{i}" for i in range(1, N_HITS + 1) for col in ("ori", "score", "position")]
@@ -129,7 +126,7 @@ def main():
             genome = str(record.seq).upper()
             try:
                 hits = top_hits(aligner, genome, QUERY)
-            except Exception as e:  # e.g. characters outside the matrix alphabet
+            except Exception as e:  # characters outside the matrix alphabet
                 print(f"WARNING: {virus_dir.name} failed: {e}")
                 continue
 

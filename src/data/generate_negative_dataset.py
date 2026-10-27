@@ -28,7 +28,7 @@ def add_wrong_9mers(
     nucleotide_col=None,
     protein_col=None,
     distant_fraction=0.20,
-    seed=None,
+    seed=3242,
 ) -> pd.DataFrame:
     """Replace each row's 9-mer with one from a dissimilar protein row."""
     result = df.copy()
